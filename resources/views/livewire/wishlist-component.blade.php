@@ -29,11 +29,11 @@
             }
 
             .product-wish .fa:hover{
-                color: #ff7007;
+                color: crimson !important;
             }
 
             .fill-heart{
-                color: #ff7007 !important;
+                color: crimson !important;
             }
 
         </style>

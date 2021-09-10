@@ -43,14 +43,14 @@
 						<div class="topbar-menu left-menu">
 							<ul>
 								<li class="menu-item" >
-									<a title="Hotline: (+123) 456 789" href="#" ><span class="icon label-before fa fa-mobile"></span>Hotline: (+123) 456 789</a>
+									<a title="" href="#" ><span class="icon label-before fa fa-mobile"></span>TELÉFONO: (+34) 543 345 543</a>
 								</li>
 							</ul>
 						</div>
 						<div class="topbar-menu right-menu">
 							<ul>
 
-								<li class="menu-item lang-menu menu-item-has-children parent">
+								{{-- <li class="menu-item lang-menu menu-item-has-children parent">
 									<a title="English" href="#"><span class="img label-before"><img src="assets/images/lang-en.png" alt="lang-en"></span>English<i class="fa fa-angle-down" aria-hidden="true"></i></a>
 									<ul class="submenu lang" >
 										<li class="menu-item" ><a title="hungary" href="#"><span class="img label-before"><img src="assets/images/lang-hun.png" alt="lang-hun"></span>Hungary</a></li>
@@ -72,17 +72,17 @@
 											<a title="Dollar (USD)" href="#">Dollar (USD)</a>
 										</li>
 									</ul>
-								</li>
+								</li> --}}
 
                                 @if(Route::has('login'))
                                     @auth
                                         @if(Auth::user()->utype === 'ADM')
 
                                             <li class="menu-item menu-item-has-children parent" >
-                                                <a title="My account" href="#">My account ({{ Auth::user()->name }})<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                                                <a title="My account" href="#">MI CUENTA ({{ Auth::user()->name }})<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                                                 <ul class="submenu curency" >
                                                     <li class="menu-item" >
-                                                        <a title="Dashboard" href="{{ route('admin.dashboard') }}">Dashboard</a>
+                                                        <a title="Dashboard" href="#">Panel de control <i>(working...)</i></a>
                                                     </li>
                                                     <li class="menu-item" >
                                                         <a title="Categories" href="{{ route('admin.categories') }}">Categorías</a>
@@ -112,10 +112,10 @@
                                         @else
 
                                             <li class="menu-item menu-item-has-children parent" >
-                                                <a title="My account" href="#">My account ({{ Auth::user()->name }})<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                                                <a title="My account" href="#">Mi cuenta ({{ Auth::user()->name }})<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                                                 <ul class="submenu curency" >
                                                     <li class="menu-item" >
-                                                        <a title="Dashboard" href="{{ route('user.dashboard') }}">Dashboard</a>
+                                                        <a title="Dashboard" href="{{ route('user.dashboard') }}">Panel de control <i>(working...)</i></a>
                                                     </li>
                                                     <li class='menu-item'>
                                                         <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
@@ -129,8 +129,8 @@
                                         @endif
 
                                     @else
-                                        <li class="menu-item" ><a title="Register or Login" href="{{ route('login') }}">Login</a></li>
-                                        <li class="menu-item" ><a title="Register or Login" href="{{ route('register') }}">Register</a></li>
+                                        <li class="menu-item" ><a title="Register or Login" href="{{ route('login') }}">Entrar</a></li>
+                                        <li class="menu-item" ><a title="Register or Login" href="{{ route('register') }}">Registrarse</a></li>
                                     @endauth
                                 @endif
                             </ul>
@@ -142,7 +142,7 @@
 					<div class="mid-section main-info-area">
 
 						<div class="wrap-logo-top left-section">
-							<a href="index.html" class="link-to-home"><img src="{{ asset('assets/images/logo-top-1.png') }}" alt="mercado"></a>
+							<a href="/" class="link-to-home"><img src="{{ asset('assets/images/logo-top-1.png') }}" alt="mercado"></a>
 						</div>
 
 						@livewire('header-search-component')
@@ -164,7 +164,7 @@
 					</div>
 				</div>
 
-				<div class="nav-section header-sticky">
+				{{-- <div class="nav-section header-sticky">
 					<div class="header-nav-section">
 						<div class="container">
 							<ul class="nav menu-nav clone-main-menu" id="mercado_haead_menu" data-menuname="Sale Info" >
@@ -175,7 +175,7 @@
 								<li class="menu-item"><a href="#" class="link-term">Top rated items</a><span class="nav-label hot-label">hot</span></li>
 							</ul>
 						</div>
-					</div>
+					</div> --}}
 
 					<div class="primary-nav-section">
 						<div class="container">
@@ -183,21 +183,21 @@
 								<li class="menu-item home-icon">
 									<a href="/" class="link-term mercado-item-title"><i class="fa fa-home" aria-hidden="true"></i></a>
 								</li>
+								{{-- <li class="menu-item disabled">
+									<a href="" class="link-term mercado-item-title" >Sobre Nosotros</a>
+								</li> --}}
 								<li class="menu-item">
-									<a href="about-us.html" class="link-term mercado-item-title">About Us</a>
+									<a href="{{ route('shop') }}" class="link-term mercado-item-title">Tienda</a>
 								</li>
 								<li class="menu-item">
-									<a href="{{ route('shop') }}" class="link-term mercado-item-title">Shop</a>
+									<a href="{{ route('product.cart') }}" class="link-term mercado-item-title">Carrito</a>
 								</li>
-								<li class="menu-item">
-									<a href="{{ route('product.cart') }}" class="link-term mercado-item-title">Cart</a>
+								{{-- <li class="menu-item disabled">
+									<a href="" class="link-term mercado-item-title">Checkout</a>
 								</li>
-								<li class="menu-item">
-									<a href="{{ route('checkout') }}" class="link-term mercado-item-title">Checkout</a>
-								</li>
-								<li class="menu-item">
-									<a href="contact-us.html" class="link-term mercado-item-title">Contact Us</a>
-								</li>
+								<li class="menu-item disabled">
+									<a href="" class="link-term mercado-item-title">Contacta con nosotros</a>
+								</li> --}}
 							</ul>
 						</div>
 					</div>
@@ -207,6 +207,13 @@
 	</header>
 
     {{ $slot }}
+
+    <div class="widget-mercado-widget">
+        <div class="alert alert-danger text-center">
+           <p><i class="far fa-arrow-alt-circle-down"></i> Sección en construcción <i class="far fa-arrow-alt-circle-down"></i></p>
+           <p><i>(sin funcionalidad)</i></p>
+        </div>
+    </div>
 
 	<footer id="footer">
 		<div class="wrap-footer-content footer-style-1">
@@ -444,7 +451,7 @@
 			<div class="coppy-right-box">
 				<div class="container">
 					<div class="coppy-right-item item-left">
-						<p class="coppy-right-text">Copyright © 2020 Surfside Media. All rights reserved</p>
+						<p class="coppy-right-text">Copyright © 2021 Juan Jesús López Fernández</p>
 					</div>
 					<div class="coppy-right-item item-right">
 						<div class="wrap-nav horizontal-nav">
@@ -462,23 +469,35 @@
 		</div>
 	</footer>
 
-	<script src="{{ asset('assets/js/jquery-1.12.4.minb8ff.js?ver=1.12.4') }}"></script>
-	<script src="{{ asset('assets/js/jquery-ui-1.12.4.minb8ff.js?ver=1.12.4') }}"></script>
-	<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-	<script src="{{ asset('assets/js/jquery.flexslider.js') }}"></script>
-	{{-- <script src="{{ asset('assets/js/chosen.jquery.min.js') }}"></script> --}}
-	<script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
-	<script src="{{ asset('assets/js/jquery.countdown.min.js') }}"></script>
-	<script src="{{ asset('assets/js/jquery.sticky.js') }}"></script>
+
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/ui/1.13.0-rc.2/jquery-ui.min.js" integrity="sha256-RQLbEU539dpygNMsBGZlplus6CkitaLy0btTCHcULpI=" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.2/jquery.flexslider.js" integrity="sha512-/LtMywMLXZ29TJbETec4e6ndSWPxQDTdsqCud+8Q4IFnKQ1WVlr87r0D5oo9QNO9zuqQNJDmvQxQmvqe8DRYLA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+
+	{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js" integrity="sha512-rMGGF4wg1R73ehtnxXBt5mbUfN9JUJwbk21KMlnLZDJh7BkPmeovBuddZCENJddHYYMkCh9hPFnPmS9sspki8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js" integrity="sha512-9CWGXFSJ+/X0LWzSRCZFsOPhSfm6jbnL+Mpqo0o8Ke2SYr8rCTqb4/wGm+9n13HtDE1NQpAEOrMecDZw4FXQGg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-countdown/2.1.0/js/jquery.countdown.min.js" integrity="sha512-+Cdr05lT+aP+PTW4988XKLMjoAf0o5P2nRDIHooD/NItysfsyCPPhZhK/C6s7ZpaVoMRtsvRNJLtYOTDANC5UA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.sticky/1.0.4/jquery.sticky.min.js" integrity="sha512-QABeEm/oYtKZVyaO8mQQjePTPplrV8qoT7PrwHDJCBLqZl5UmuPi3APEcWwtTNOiH24psax69XPQtEo5dAkGcA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="{{ asset('assets/js/functions.js') }}"></script>
+
+
+
+
+
+
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js" integrity="sha512-GDey37RZAxFkpFeJorEUwNoIbkTwsyC736KNSYucu1WJWFK9qTdzYub8ATxktr6Dwke7nbFaioypzbDOQykoRg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.7.0/nouislider.min.js" integrity="sha512-jWNpWAWx86B/GZV4Qsce63q5jxx/rpWnw812vh0RE+SBIo/mmepwOSQkY2eVQnMuE28pzUEO7ux0a5sJX91g8A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.tiny.cloud/1/oere9cszf9dpokpfyxrpgqkuh3u19lyt1c20pzgez8ab6z74/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-
-
-    @livewireScripts
+    <script src="https://cdn.tiny.cloud/1/oere9cszf9dpokpfyxrpgqkuh3u19lyt1c20pzgez8ab6z74/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>    @livewireScripts
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
 
     @stack('scripts')
 </body>

@@ -19,6 +19,26 @@ class SearchComponent extends Component
     public $product_cat_id;
 
     use WithPagination;
+
+
+
+    public function mount()
+    {
+        $this->sorting = 'default';
+        $this->pagesize = 12;
+        $this->fill(request()->only('search', 'product_cat', 'product_cat_id'));
+    }
+
+    public function store($product_id, $product_name, $product_price)
+    {
+        Cart::add($product_id, $product_name, 1, $product_price)->associate('App\Models\Product');
+
+        session()->flash('success_message', 'Item added in cart');
+
+        return redirect()->route('product.cart');
+    }
+
+
     public function render()
     {
 
@@ -45,22 +65,6 @@ class SearchComponent extends Component
 
         //Vista final
         return view('livewire.search-component', ['products' => $products, 'categories' => $categories])->layout('layouts.base');
-    }
-
-    public function store($product_id, $product_name, $product_price)
-    {
-        Cart::add($product_id, $product_name, 1, $product_price)->associate('App\Models\Product');
-
-        session()->flash('success_message', 'Item added in cart');
-
-        return redirect()->route('product.cart');
-    }
-
-    public function mount()
-    {
-        $this->sorting = 'default';
-        $this->pagesize = 12;
-        $this->fill(request()->only('search', 'product_cat', 'product_cat_id'));
     }
 
 }

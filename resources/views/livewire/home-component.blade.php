@@ -2,8 +2,24 @@
     <main id="main">
 		<div class="container">
 
+            <div class="alert alert-info text-center info-dev">
+                <p><i>La página cuenta con algunas funcionalidades aun no aplicadas y algunos estilos visuales no pulidos, sobre todo en el responsive. Se aconseja ver la página a pantalla completa en un ordenador</i></p>
+                <br>
+                <p><i>El resto de funcionalidades las iré implementando en los siguientes días. De momento se puede pasear por la tienda como un usuario normal (añadiendo a la lista de deseos, al carrito, guardando para más tarde...)Además, se pueden administrar productos y demás aspectos de la web entrado como administrador con las credenciales que hay aquí abajo. </i></p>
+                <br>
+                <p><i>Muchas gracias por la visita. Espero que tu estancia sea al menos agradable ;)</i></p>
+            </div>
+
+            <div class="alert alert-success text-center">
+                <p>CREDENCIALES PARA ENTRAR COMO ADMINISTRADOR</p>
+                <P>EMAIL: admin@admin.com</P>
+                <p>CONTRASEÑA: secretos</p>
+                <br>
+                <p>Por favor, si entras como administrador, no me hagas un destrozo, que soy muy sensible.</p>
+            </div>
+
 			<!--MAIN SLIDE-->
-			{{-- <div class="wrap-main-slide">
+			<div class="wrap-main-slide">
 				<div class="slide-carousel owl-carousel style-nav-1" data-items="1" data-loop="1" data-nav="true" data-dots="false">
 
                     @foreach($sliders as $slider)
@@ -13,12 +29,16 @@
                                 <h2 class="f-title">{{ $slider->title }}</h2>
                                 <span class="subtitle">{{ $slider->subtitle }}</span>
                                 <p class="sale-info">Precio: <span class="price">{{ $slider->price }}</span></p>
-                                <a href="{{ $slider->link }}" class="btn-link">Shop Now</a>
+                                <a href="{{ $slider->link }}" class="btn-link">Comprar <i>(offline)</i></a>
                             </div>
                         </div>
 					@endforeach
 				</div>
-			</div> --}}
+			</div>
+
+
+
+
 
 			<!--BANNER-->
 			{{-- <div class="wrap-banner style-twin-default">
@@ -35,9 +55,9 @@
 			</div> --}}
 
 			<!--On Sale-->
-            @if($sproducts->count() > 0 && $sale->status == 1 && $sale->sale_date > Carbon\Carbon::now() )
+            {{-- @if($sproducts->count() > 0 && $sale->status == 1 && $sale->sale_date > Carbon\Carbon::now() ) --}}
 
-            <div class="wrap-show-advance-info-box style-1 has-countdown">
+            <div class="wrap-show-advance-info-box style-1">
                     <h3 class="title-box">Oportunidades</h3>
                     {{-- <div class="wrap-countdown mercado-countdown" data-expire={{ Carbon\Carbon::parse($sale->sale_date)->format('Y/m/d h:m:s') }}></div> --}}
                     <div class="wrap-products slide-carousel owl-carousel style-nav-1 equal-container " data-items="5" data-loop="false" data-nav="true" data-dots="false" data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"4"},"1200":{"items":"5"}}'>
@@ -64,17 +84,17 @@
 
 
                     </div>
-                </div>
-            @endif
+            </div>
+            {{-- @endif --}}
 
 			<!--Latest Products-->
 			<div class="wrap-show-advance-info-box style-1">
 				<h3 class="title-box">ÚLTIMOS PRODUCTOS</h3>
-				<div class="wrap-top-banner">
+				{{-- <div class="wrap-top-banner">
 					<a href="#" class="link-banner banner-effect-2">
 						<figure><img src="{{ asset('assets/images/digital-electronic-banner.jpg') }}" width="1170" height="240" alt=""></figure>
 					</a>
-				</div>
+				</div> --}}
 				<div class="wrap-products">
 					<div class="wrap-product-tab tab-style-1">
 						<div class="tab-contents">
@@ -109,11 +129,11 @@
 			<!--Product Categories-->
 			<div class="wrap-show-advance-info-box style-1">
 				<h3 class="title-box">Categorías</h3>
-				<div class="wrap-top-banner">
+				{{-- <div class="wrap-top-banner">
 					<a href="#" class="link-banner banner-effect-2">
 						<figure><img src="{{ asset('assets/images/fashion-accesories-banner.jpg') }}" width="1170" height="240" alt=""></figure>
 					</a>
-				</div>
+				</div> --}}
 				<div class="wrap-products">
 					<div class="wrap-product-tab tab-style-1">
 
@@ -141,7 +161,7 @@
                                                     <a href="{{ route('product.details', ['slug' => $c_product->slug]) }}" title="{{ $c_product->name }}">
                                                         <figure><img src="{{ asset('assets/images/products') }}/{{ $c_product->image }}" width="800" height="800" alt="{{ $c_product->name }}"></figure>
                                                     </a>
-                                                        <a href="{{ route('product.details', ['slug' => $c_product->slug]) }}" class="function-link">vistazo</a>
+                                                        <a href="{{ route('product.details', ['slug' => $c_product->slug]) }}" class="function-link">detalles</a>
                                                 </div>
                                                 <div class="product-info">
                                                     <a href="{{ route('product.details', ['slug' => $c_product->slug]) }}" class="product-name"><span>{{ $c_product->name }}</span></a>

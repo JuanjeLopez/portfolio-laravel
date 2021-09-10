@@ -4,9 +4,8 @@
         <div class="left-info">
 
             @if(Cart::instance('cart')->count() > 0)
-                <span class="index">{{ Cart::instance('cart')->count() }} items</span>
+                <span class="index">{{ Cart::instance('cart')->count() }}</span>
             @endif
-                <span class="title">Carrito</span>
         </div>
     </a>
 </div>

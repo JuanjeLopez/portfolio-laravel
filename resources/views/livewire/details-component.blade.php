@@ -5,7 +5,7 @@
         <div class="wrap-breadcrumb">
             <ul>
                 <li class="item-link"><a href="/" class="link">home</a></li>
-                <li class="item-link"><span>detail</span></li>
+                <li class="item-link"><span>Detalles</span></li>
             </ul>
         </div>
         <div class="row">
@@ -41,18 +41,18 @@
                         @if($product->sale_price > 0 && $sale->status == 1 && $sale->sale_date > Carbon\Carbon::now())
                             <div class="wrap-price">
                                 <span class="product-price">{{ $product->sale_price }}</span>
-                                <del><p class="product-price">{{ $product->regular_price }}</p></del></div>
-
+                                <del><p class="product-price">{{ $product->regular_price }}</p></del>
                             </div>
                         @else
-
-                        @endif
                         <div class="wrap-price"><span class="product-price">{{ $product->regular_price }}</span></div>
+                        @endif
+
                         <div class="stock-info in-stock">
-                            <p class="availability">Availability: <b>{{ $product->stock_status }}</b></p>
+                            <br>
+                            <p class="availability">Disponibilidad: <b>{{ $product->stock_status }}</b></p>
                         </div>
                         <div class="quantity">
-                            <span>Quantity:</span>
+                            <span>Cantidad</span>
                             <div class="quantity-input">
                                 <input type="text" name="product-quatity" value="1" data-max="120" pattern="[0-9]*" wire:model='qty' >
 
@@ -63,28 +63,27 @@
                         <div class="wrap-butons">
 
                             @if($product->sale_price > 0 && $sale->status == 1 && $sale->sale_date > Carbon\Carbon::now())
-                                <a href="#" class="btn add-to-cart" wire:click.prevent="store({{ $product->id }}, '{{ $product->name }}', {{ $product->sale_price }})">Add to Cart</a>
+                                <a href="#" class="btn add-to-cart" wire:click.prevent="store({{ $product->id }}, '{{ $product->name }}', {{ $product->sale_price }})">Añadir al carrito</a>
                             @else
-                                <a href="#" class="btn add-to-cart" wire:click.prevent="store({{ $product->id }}, '{{ $product->name }}', {{ $product->regular_price }})">Add to Cart</a>
+                                <a href="#" class="btn add-to-cart" wire:click.prevent="store({{ $product->id }}, '{{ $product->name }}', {{ $product->regular_price }})">Añadir al carrito</a>
                             @endif
 
                             <div class="wrap-btn">
-                                <a href="#" class="btn btn-compare">Add Compare</a>
-                                <a href="#" class="btn btn-wishlist">Add Wishlist</a>
+                                <a href="#" class="btn btn-wishlist pull-left" wire:click.prevent='addToWishlist({{ $product->id}}, "{{ $product->name }}", {{ $product->regular_price }})'>Añadir a la lista de deseos</a>
                             </div>
                         </div>
                     </div>
                     <div class="advance-info">
                         <div class="tab-control normal">
-                            <a href="#description" class="tab-control-item active">description</a>
-                            <a href="#add_infomation" class="tab-control-item">Addtional Infomation</a>
-                            <a href="#review" class="tab-control-item">Reviews</a>
+                            <a href="#description" class="tab-control-item active">Descripción</a>
+                            {{-- <a href="#add_infomation" class="tab-control-item">Información adicional</a>
+                            <a href="#review" class="tab-control-item">Reseñas</a> --}}
                         </div>
                         <div class="tab-contents">
                             <div class="tab-content-item active" id="description">
                                 {!! $product->description !!}
                             </div>
-                            <div class="tab-content-item " id="add_infomation">
+                            {{-- <div class="tab-content-item " id="add_infomation">
                                 <table class="shop_attributes">
                                     <tbody>
                                         <tr>
@@ -174,7 +173,7 @@
                                     </div><!-- #review_form_wrapper -->
 
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -189,9 +188,9 @@
                                 <a class="link-to-service" href="#">
                                     <i class="fa fa-truck" aria-hidden="true"></i>
                                     <div class="right-content">
-                                        <b class="title">Free Shipping</b>
-                                        <span class="subtitle">On Oder Over $99</span>
-                                        <p class="desc">Lorem Ipsum is simply dummy text of the printing...</p>
+                                        <b class="title">¡ENVÍOS GRATIS!</b>
+                                        <span class="subtitle">Por compras superiores a 100.000€</span>
+                                        <p class="desc">¿Te parece un límite alto? Pues sí, lo es, pero es lo que hay. Tengo cinco hijos que alimentar y todo eso.</p>
                                     </div>
                                 </a>
                             </li>
@@ -200,9 +199,9 @@
                                 <a class="link-to-service" href="#">
                                     <i class="fa fa-gift" aria-hidden="true"></i>
                                     <div class="right-content">
-                                        <b class="title">Special Offer</b>
-                                        <span class="subtitle">Get a gift!</span>
-                                        <p class="desc">Lorem Ipsum is simply dummy text of the printing...</p>
+                                        <b class="title">OFERTA ESPECIAL</b>
+                                        <span class="subtitle">¡Consigue un regalo!</span>
+                                        <p class="desc">Uno muy bonito, con su papel de colorines y su lazo y su caja de carton con letras impresas... Puedes elegir entre mojama o brócoli.</p>
                                     </div>
                                 </a>
                             </li>
@@ -211,9 +210,9 @@
                                 <a class="link-to-service" href="#">
                                     <i class="fa fa-reply" aria-hidden="true"></i>
                                     <div class="right-content">
-                                        <b class="title">Order Return</b>
-                                        <span class="subtitle">Return within 7 days</span>
-                                        <p class="desc">Lorem Ipsum is simply dummy text of the printing...</p>
+                                        <b class="title">DEVOLUCIONES</b>
+                                        <span class="subtitle">Puedes devolver hasta en 15... ... ... ... ... minutos.</span>
+                                        <p class="desc">¡Buhahahahaha!</p>
                                     </div>
                                 </a>
                             </li>
@@ -222,7 +221,7 @@
                 </div><!-- Categories widget-->
 
                 <div class="widget mercado-widget widget-product">
-                    <h2 class="widget-title">Popular Products</h2>
+                    <h2 class="widget-title">Productos populares</h2>
                     <div class="widget-content">
                         <ul class="products">
                             @foreach($popular_products as $product)
@@ -250,7 +249,7 @@
 
             <div class="single-advance-box col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="wrap-show-advance-info-box style-1 box-in-site">
-                    <h3 class="title-box">Related Products</h3>
+                    <h3 class="title-box">Productos relacionados</h3>
                     <div class="wrap-products">
                         <div class="products slide-carousel owl-carousel style-nav-1 equal-container" data-items="5" data-loop="false" data-nav="true" data-dots="false" data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"3"},"1200":{"items":"5"}}' >
 
@@ -260,11 +259,9 @@
                                     <a href="{{ route('product.details', ['slug' => $product->slug]) }}" title="{{ $product->name }}">
                                         <figure><img src="{{ asset('assets/images/products') }}/{{ $product->image }}" width="214" height="214" alt="{{ $product->name }}"></figure>
                                     </a>
-                                    <div class="group-flash">
-                                        <span class="flash-item new-label">new</span>
-                                    </div>
+
                                     <div class="wrap-btn">
-                                        <a href="{{ route('product.details', ['slug' => $product->slug]) }}" class="function-link">quick view</a>
+                                        <a href="{{ route('product.details', ['slug' => $product->slug]) }}" class="function-link">detalles</a>
                                     </div>
                                 </div>
                                 <div class="product-info">

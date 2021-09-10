@@ -32,9 +32,11 @@ class ShopComponent extends Component
     {
         Cart::instance('cart')->add($product_id, $product_name, 1, $product_price)->associate('App\Models\Product');
 
-        session()->flash('success_message', 'Item added in cart');
+        $this->emitTo('cart-count-component', 'refreshComponent');
 
-        return redirect()->route('product.cart');
+        // session()->flash('success_message', 'Item added in cart');
+
+        return redirect()->back();
     }
 
     public function addToWishlist($product_id, $product_name, $product_price)
@@ -63,15 +65,15 @@ class ShopComponent extends Component
     {
 
         // Ordenar por
-        if($this->sorting === 'date')
+        if($this->sorting == 'date')
         {
             $products = Product::whereBetween('regular_price', [$this->min_price, $this->max_price])->orderBy('created_at', 'DESC')->paginate($this->pagesize);
         }
-        else if($this->sorting === 'price')
+        else if($this->sorting == 'price')
         {
             $products = Product::whereBetween('regular_price', [$this->min_price, $this->max_price])->orderBy('regular_price', 'ASC')->paginate($this->pagesize);
         }
-        else if($this->sorting === 'price-desc')
+        else if($this->sorting == 'price-desc')
         {
             $products = Product::whereBetween('regular_price', [$this->min_price, $this->max_price])->orderBy('regular_price', 'DESC')->paginate($this->pagesize);
         }

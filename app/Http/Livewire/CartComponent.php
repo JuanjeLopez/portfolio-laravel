@@ -1,16 +1,18 @@
 <?php
 
-use App\Models\Product;
+
 
 
 namespace App\Http\Livewire;
 
-use Cart;
+use App\Models\Sale;
 use App\Models\Product;
 use Livewire\Component;
+use Cart;
 
 class CartComponent extends Component
 {
+
 
     public function increase($rowId)
     {
@@ -40,7 +42,7 @@ class CartComponent extends Component
 
         $this->emitTo('cart-count-component', 'refreshComponent');
 
-        session()->flash('success_message', 'Item has been remove');
+        session()->flash('success_message', 'Artículo eliminado del carrito');
 
 
     }
@@ -85,7 +87,14 @@ class CartComponent extends Component
 
     public function render()
     {
-        return view('livewire.cart-component')->layout('layouts.base');
+
+        $sproducts = Product::where('sale_price', '>', 0)->inRandomOrder()->get()->take(8);
+        $sale = Sale::find(1);
+
+        return view('livewire.cart-component', [
+            'sproducts' => $sproducts,
+            'sale' => $sale,
+        ])->layout('layouts.base');
     }
 
 }
