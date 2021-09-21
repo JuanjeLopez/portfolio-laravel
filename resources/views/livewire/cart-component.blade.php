@@ -65,7 +65,7 @@
                     <h4 class="title-box">Resumen del pedido</h4>
                     <p class="summary-info"><span class="title">Subtotal</span><b class="index">{{ Cart::instance('cart')->subtotal() }}</b></p>
                     <p class="summary-info"><span class="title">Impuestos</span><b class="index">{{ Cart::instance('cart')->tax() }}</b></p>
-                    <p class="summary-info"><span class="title">Envío</span><b class="index">¡Envío gratis! Era broma lo de los 100.000 ;)</b></p>
+                    <p class="summary-info"><span class="title">Envío</span><b class="index">¡Envío gratis! A tope</b></p>
                     <p class="summary-info total-info "><span class="title">Total</span><b class="index">{{ Cart::instance('cart')->total() }}</b></p>
                 </div>
                 <div class="checkout-info">
